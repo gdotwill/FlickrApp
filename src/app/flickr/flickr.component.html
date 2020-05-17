@@ -1,0 +1,47 @@
+<div class="header">
+    <h1>Flickr Image Search</h1>
+</div>
+<div class="row">
+  <div class="col-md-9 photo-container">
+    <div class="form-group mb-3 pl-4 pr-4">
+      <input  #formInput
+              class="form-control"
+              placeholder="Search...."
+              type="search"
+              [formControl]="searchControl"
+              [(ngModel)]="textInput"
+              />
+    </div>
+    <div *ngIf="textInput">
+      <p class="favContainer mb-4">Add to favourites <span class="addFav" (click)="addFav(formInput, formInput.value)"> + </span> </p>
+      <div class="flex">
+        <div class="card-container">
+          <div class="card" *ngFor="let photo of photos">
+            <div class="p-1">
+              <img src={{photo.url}} />
+            </div>
+            <div class="photo-info">
+              <p>{{photo.title}}</p>
+            </div>`
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="favContainer col-md-3">
+    <h4>Favourites <img src="./assets/images/star.svg" class="favourite"></h4>
+    <ul>
+      <li *ngFor="let fav of favList">
+        <span class="favName">{{fav}}</span> <span class="removeFav" (click)="deleteFav(fav)"> - </span >
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+
+
+
+
+
+
